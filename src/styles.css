@@ -102,6 +102,7 @@
 
 /* Game Board */
 .board {
+	position: relative;
 	display: grid;
 	grid-template-columns: repeat(3, minmax(106px, 1fr));
 	grid-template-rows: repeat(3, minmax(108px, 1fr));
@@ -217,6 +218,21 @@
 	margin: auto;
 }
 
+/* winner */
+.result {
+	text-align: center;
+	font-weight: 500;
+	font-size: 2rem;
+	margin: 2rem 0;
+}
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+}
 /* Button Variants */
 .btn {
 	text-decoration: none;
@@ -242,6 +258,7 @@
 }
 
 .icon-btn {
+	text-decoration: none;
 	cursor: pointer;
 	border: none;
 	background-color: white;
@@ -301,11 +318,17 @@
 .mt-3 {
 	margin-top: 3rem;
 }
+.mt-2 {
+	margin-top: 2rem;
+}
 .mr-2 {
 	margin-right: 2rem;
 }
 .text-blue {
 	color: var(--blue-600);
+}
+.text-center {
+	text-align: center;
 }
 
 .rounded-full {
