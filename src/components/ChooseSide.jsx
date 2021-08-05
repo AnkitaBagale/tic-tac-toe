@@ -6,8 +6,8 @@ export const ChooseSide = () => {
 		<div className='home-container'>
 			<h1 className='p-t-b-2 font-sm'>Pick your side</h1>
 
-			<div className='flex'>
-				<label className='radio-label'>
+			<div>
+				<label className='radio-label mr-2'>
 					<input
 						checked
 						className='radio-blue'

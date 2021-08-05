@@ -35,9 +35,16 @@ export const TicTacToeGame = () => {
 	};
 
 	return (
-		<>
+		<div className='m-auto'>
+			<div className='flex justify-around items-center p-t-b-1'>
+				<p>Alex</p>
+				<span className='capsule'>0 - 0</span>
+				<p>AI</p>
+			</div>
 			<Board boxes={boxes} clickHandler={handleClick} />
-			{winner}
-		</>
+			<button className='icon-btn rounded-full mt-3'>
+				<i className='fas fa-cog text-blue'></i>
+			</button>
+		</div>
 	);
 };

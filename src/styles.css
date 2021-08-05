@@ -29,69 +29,94 @@
 	text-align: center;
 	width: 100%;
 }
-.board {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(87px, 1fr));
-	grid-template-rows: repeat(3, minmax(80px, 1fr));
+
+/* Custom radio buttons */
+.radio-label .symbol {
+	opacity: 0.3;
 }
 
-/* Hide the browser's default checkbox */
+.radio-label:hover .symbol {
+	opacity: 0.5;
+}
+
+.radio-label {
+	display: inline-flex;
+	align-items: center;
+	flex-direction: column-reverse;
+	cursor: pointer;
+}
+
+.radio-blue:checked ~ .symbol {
+	opacity: 1;
+}
+
 .radio-blue {
-	position: absolute;
 	opacity: 0;
 	cursor: pointer;
 	height: 0;
 	width: 0;
 }
 
-/* Create a custom checkbox */
-.checkmark {
-	position: absolute;
+.radio-symbol {
+	margin-top: 2rem;
+	position: relative;
 	top: 0;
 	left: 0;
-	height: 25px;
-	width: 25px;
-	background-color: #eee;
+	height: 1.5rem;
+	width: 1.5rem;
+	background-color: var(--gray-300);
+	border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.radio-label:hover input ~ .radio-symbol {
 	background-color: #ccc;
 }
 
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-	background-color: #2196f3;
+.radio-label input:checked ~ .radio-symbol {
+	background-image: linear-gradient(
+		to right,
+		var(--blue-600),
+		var(--green-500)
+	);
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
+.radio-symbol:after {
 	content: '';
 	position: absolute;
-	display: none;
+	inset: 0;
+	margin: auto;
+	width: 0.75rem;
+	height: 0.75rem;
+	border-radius: 50%;
+	border: 0.25rem solid white;
+	background-color: white;
 }
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.radio-label input:checked ~ .radio-symbol:after {
 	display: block;
+	background-image: linear-gradient(
+		to right,
+		var(--blue-500),
+		var(--green-500)
+	);
 }
 
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-	left: 9px;
-	top: 5px;
-	width: 5px;
-	height: 10px;
-	border: solid white;
-	border-width: 0 3px 3px 0;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
+/* Game Board */
+.board {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(106px, 1fr));
+	grid-template-rows: repeat(3, minmax(108px, 1fr));
+	margin: auto;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
+/* Tic tac toe buttons */
 .tic-tac-toe-btn {
 	background-color: transparent;
 	border: none;
+	padding: 1rem;
 }
 .btn-0,
 .btn-1,
@@ -110,93 +135,7 @@
 	border-right: 2px solid var(--gray-300);
 }
 
-.radio-label .symbol {
-	opacity: 0.3;
-}
-
-.radio-label {
-	display: inline-flex;
-	align-items: center;
-	flex-direction: column-reverse;
-}
-
-.radio-blue {
-	width: 0;
-	height: 0;
-	position: relative;
-}
-
-.radio-blue:before {
-	position: absolute;
-	top: 0;
-	width: 2rem;
-	height: 2rem;
-	border-radius: 50%;
-	border: 2px solid var(--gray-300);
-	background-color: pink;
-}
-
-.radio-blue:checked ~ .symbol {
-	opacity: 1;
-}
-
-/* utilities */
-.btn {
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
-	border: none;
-	padding: 0.6rem 1rem;
-	border-radius: 1.5rem;
-	min-width: 120px;
-	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
-
-.primary-btn {
-	background-color: var(--blue-600);
-	color: white;
-	font-weight: 300;
-}
-.secondary-btn {
-	background-color: white;
-	font-weight: 400;
-}
-.font-sm {
-	font-size: 1rem;
-}
-
-.p-t-b-2 {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-}
-.mt-1 {
-	margin-top: 1rem;
-}
-.mt-3 {
-	margin-top: 3rem;
-}
-.text-blue {
-	color: var(--blue-600);
-}
-.icon-btn {
-	cursor: pointer;
-	border: none;
-	background-color: white;
-	padding: 0.5rem;
-	width: 2rem;
-	height: 2rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-left: auto;
-	margin-right: auto;
-	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
-.rounded-full {
-	border-radius: 50%;
-}
+/* Cross Symbol */
 .cross-container {
 	display: inline-block;
 	position: relative;
@@ -239,6 +178,8 @@
 	transform: rotate(-45deg);
 }
 
+/* Zero Symbol */
+
 .zero-container {
 	display: inline-block;
 	position: relative;
@@ -274,4 +215,99 @@
 	background-color: white;
 	inset: 0;
 	margin: auto;
+}
+
+/* Button Variants */
+.btn {
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	border: none;
+	padding: 0.6rem 1rem;
+	border-radius: 1.5rem;
+	min-width: 120px;
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+	font-size: 0.9rem;
+}
+
+.primary-btn {
+	background-color: var(--blue-600);
+	color: white;
+	font-weight: 300;
+}
+.secondary-btn {
+	background-color: white;
+	font-weight: 400;
+}
+
+.icon-btn {
+	cursor: pointer;
+	border: none;
+	background-color: white;
+	padding: 0.5rem;
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+/* bagde */
+.capsule {
+	display: inline-block;
+	background-color: white;
+	font-weight: 400;
+	padding: 0.2rem 1rem;
+	font-weight: 700;
+	border-radius: 1.5rem;
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+	font-size: 0.9rem;
+}
+
+/* utilities */
+.flex {
+	display: flex;
+}
+.justify-around {
+	justify-content: space-around;
+}
+.items-center {
+	align-items: center;
+}
+.m-auto {
+	margin: auto;
+}
+.font-sm {
+	font-size: 1rem;
+}
+.p-t-b-1 {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.p-t-b-2 {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+.mt-1 {
+	margin-top: 1rem;
+}
+.mt-3 {
+	margin-top: 3rem;
+}
+.mr-2 {
+	margin-right: 2rem;
+}
+.text-blue {
+	color: var(--blue-600);
+}
+
+.rounded-full {
+	border-radius: 50%;
 }
