@@ -1,7 +1,7 @@
 export const initialUserData = {
 	name: '',
-	opponent: '',
-	chosenSide: '',
+	opponent: 'AI',
+	chosenSide: 'X',
 };
 
 export const userDataReducer = (state, { type, payload }) => {

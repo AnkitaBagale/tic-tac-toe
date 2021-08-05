@@ -4,10 +4,7 @@ import { initialUserData, userDataReducer } from './reducer/user-data.reducer';
 const UserData = createContext();
 
 export const UserDataProvider = ({ children }) => {
-	const userDetails = JSON.parse(localStorage.getItem('userData')) || {
-		...initialUserData,
-	};
-	const [state, dispatch] = useReducer(userDetails, userDataReducer);
+	const [state, dispatch] = useReducer(userDataReducer, initialUserData);
 	return (
 		<UserData.Provider value={{ state, dispatch }}>
 			{children}

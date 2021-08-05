@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useUserData } from '../context/UserDataProvider';
 import { TicTacButton } from './TicTacButton';
 import { checkWinner } from './utils';
 
@@ -12,15 +13,21 @@ const Board = ({ boxes, clickHandler }) => (
 
 export const TicTacToeGame = () => {
 	const [boxes, setBoxes] = useState(Array(9).fill(null));
-
-	const [crossIsNext, setCrossIsNext] = useState(true);
+	const {
+		state: { chosenSide },
+	} = useUserData();
+	const initialCrossIsNext = chosenSide === 'X' ? true : false;
+	const [crossIsNext, setCrossIsNext] = useState(initialCrossIsNext);
 
 	const [winner, setWinner] = useState(null);
 
-	const x0 = crossIsNext ? 'X' : 'O';
+	const {
+		state: { opponent },
+	} = useUserData();
+
+	const x0 = crossIsNext ? 'X' : '0';
 
 	const handleClick = (i) => {
-		console.log('clicked');
 		if (!boxes[i]) {
 			const newStateOfBoxes = boxes.map((box, idx) => (i === idx ? x0 : box));
 			setBoxes(newStateOfBoxes);
@@ -37,9 +44,9 @@ export const TicTacToeGame = () => {
 	return (
 		<div className='m-auto'>
 			<div className='flex justify-around items-center p-t-b-1'>
-				<p>Alex</p>
+				<p>Player 1</p>
 				<span className='capsule'>0 - 0</span>
-				<p>AI</p>
+				<p>{opponent}</p>
 			</div>
 			<Board boxes={boxes} clickHandler={handleClick} />
 			<button className='icon-btn rounded-full mt-3'>
