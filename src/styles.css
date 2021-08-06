@@ -29,6 +29,14 @@
 	text-align: center;
 	width: 100%;
 }
+@media screen and (max-width: 480px) {
+	.App {
+		padding: 1rem;
+	}
+	.home-container {
+		width: 100%;
+	}
+}
 
 /* Custom radio buttons */
 .radio-label .symbol {
@@ -112,12 +120,19 @@
 	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
 		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+@media screen and (max-width: 480px) {
+	.board {
+		width: 100%;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
 
 /* Tic tac toe buttons */
 .tic-tac-toe-btn {
 	background-color: transparent;
 	border: none;
 	padding: 1rem;
+	cursor: pointer;
 }
 .btn-0,
 .btn-1,
@@ -179,6 +194,23 @@
 	transform: rotate(-45deg);
 }
 
+@media screen and (max-width: 480px) {
+	.cross-container {
+		width: 50px;
+		height: 50px;
+	}
+
+	.cross-side-left {
+		width: 20px;
+		height: 50px;
+	}
+
+	.cross-side-right {
+		width: 20px;
+		height: 50px;
+	}
+}
+
 /* Zero Symbol */
 
 .zero-container {
@@ -216,6 +248,17 @@
 	background-color: white;
 	inset: 0;
 	margin: auto;
+}
+@media screen and (max-width: 480px) {
+	.zero-container {
+		width: 50px;
+		height: 50px;
+	}
+
+	.zero-inner {
+		width: 15px;
+		height: 15px;
+	}
 }
 
 /* winner */
@@ -279,7 +322,7 @@
 	display: inline-block;
 	background-color: white;
 	font-weight: 400;
-	padding: 0.2rem 1rem;
+	padding: 0.4rem 1rem;
 	font-weight: 700;
 	border-radius: 1.5rem;
 	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
@@ -288,6 +331,9 @@
 }
 
 /* utilities */
+.flex-3 {
+	width: 30%;
+}
 .flex {
 	display: flex;
 }
@@ -330,7 +376,9 @@
 .text-center {
 	text-align: center;
 }
-
+.w-full {
+	width: 100%;
+}
 .rounded-full {
 	border-radius: 50%;
 }

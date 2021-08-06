@@ -9,7 +9,6 @@ export const ChooseSide = () => {
 		state: { chosenSide },
 	} = useUserData();
 	const selectSide = (side) => {
-		console.log('running', side);
 		dispatch({ type: 'SET_SIDE', payload: { side } });
 	};
 
